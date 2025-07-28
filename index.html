@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Survey Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    h3 {
+      margin-top: 0;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      resize: vertical;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <form id="surveyForm">
+    <h3>1. How satisfied are you with our service?</h3>
+    <label><input type="radio" name="satisfaction" value="Very Satisfied" required> Very Satisfied</label><br>
+    <label><input type="radio" name="satisfaction" value="Neutral"> Neutral</label><br>
+    <label><input type="radio" name="satisfaction" value="Unsatisfied"> Unsatisfied</label><br><br>
+
+    <h3>2. Any suggestions for improvement?</h3>
+    <textarea name="suggestions" rows="4" required></textarea><br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('surveyForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      fetch("https://script.google.com/macros/s/AKfycbyt-dQy4wR5oiU6DuTItJDNWoSrevjGxw9aJY-crcDk8eOStbzQDYnyE9wOurMvbVPJuA/exec", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(response => {
+        if (response.ok) {
+          alert("Thank you for your feedback!");
+          form.reset();
+        } else {
+          alert("Error submitting form. Please try again.");
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("Submission failed. Check console for more info.");
+      });
+    });
+  </script>
+</body>
+</html>
