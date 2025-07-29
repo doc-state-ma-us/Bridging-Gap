@@ -51,12 +51,6 @@
     <label><input type="radio" name="satisfaction" value="Neutral"> Neutral</label><br>
     <label><input type="radio" name="satisfaction" value="Unsatisfied"> Unsatisfied</label><br><br>
 
-    <h3>1. How e?</h3>
-    <label><input type="radio" name="satisfaction" value="Very Satisfied" required> Very Satisfied</label><br>
-    <label><input type="radio" name="satisfaction" value="Neutral"> Neutral</label><br>
-    <label><input type="radio" name="satisfaction" value="Unsatisfied"> Unsatisfied</label><br><br>
-
-
     <h3>2. Any suggestions for improvement?</h3>
     <textarea name="suggestions" rows="4" required></textarea><br><br>
 
@@ -71,7 +65,7 @@
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
 
-      fetch("https://script.google.com/macros/s/AKfycbyS1MOciGTg8YFnQ4JwE8eE4gQOpEjYIXGIxujZe8AIJutjUHlM9qaGu0R7j1FZpUT_/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbz95EipDI3xIKzJp4FfzSWAcmfHu0qqTMJOSYko-7Ph3WgRDmwZzrE30Ykl8henymct/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
