@@ -65,7 +65,7 @@
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
 
-      fetch("https://script.google.com/macros/s/AKfycbz95EipDI3xIKzJp4FfzSWAcmfHu0qqTMJOSYko-7Ph3WgRDmwZzrE30Ykl8henymct/exec", {
+      fetch("http://127.0.0.1:5000/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
